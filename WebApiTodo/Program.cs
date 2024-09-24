@@ -13,6 +13,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.AutomaticAuthentication = false;
+});
+
 var app = builder.Build();
 
 app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
